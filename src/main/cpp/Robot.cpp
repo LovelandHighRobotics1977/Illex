@@ -42,7 +42,13 @@ void Robot::RobotInit() {
 	m_shooter.ConfigNominalOutputReverse(0);
 	m_shooter.ConfigPeakOutputForward(1);
 	m_shooter.ConfigPeakOutputReverse(-1);
-  
+
+  arm1.Set(true);
+  arm2.Set(false);
+
+  arm1.Set(false);
+  arm2.Set(false);
+
 }
 void Robot::RobotPeriodic() {}
 
@@ -332,9 +338,9 @@ void Robot::stack(int up, int down){
 
 void Robot::arm(int in, int out){
   if((in==1) && (out==0)){
-    m_arm.Set(1);
-  }else if((in==0) && (out==1)){
     m_arm.Set(-1);
+  }else if((in==0) && (out==1)){
+    m_arm.Set(1);
   }else{
     m_arm.Set(0);
   }
